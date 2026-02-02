@@ -1,0 +1,13 @@
+@(products: Seq[models.Product])
+
+@main("Products"){
+    <h1>Products</h1>
+    <ul>
+    @for(p <- products) {
+        <li>
+            <a href="/products/@p.id">@p.name</a>
+            - @p.price
+        </li>
+    }
+    </ul>
+}
