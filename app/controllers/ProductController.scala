@@ -16,15 +16,14 @@ class ProductController @Inject()(val controllerComponents: ControllerComponents
   
   def list() = Action.async:
     productRepo.findAll().map { products =>
-      Ok(views.html.admin(products))
-      
+      Ok(views.html.product(products))
     }
     
   def show(id: String) = Action.async:
     val uuid = UUID.fromString(id)
     
     productRepo.findById(uuid).map {
-      case Some(product) => Ok(views.html.product(product))
+      case Some(product) => Ok(views.html.productList(product))
       case None => NotFound("Product not found")  
     }
 }
