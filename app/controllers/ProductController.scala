@@ -5,7 +5,6 @@ import play.api.*
 import play.api.mvc.*
 import repositories.ProductRepository
 
-import java.util.UUID
 import scala.concurrent.*
 
 
@@ -20,10 +19,8 @@ class ProductController @Inject()(val controllerComponents: ControllerComponents
     }
     
   def show(id: String) = Action.async:
-    val uuid = UUID.fromString(id)
-    
-    productRepo.findById(uuid).map {
-      case Some(product) => Ok(views.html.productList(product))
+    productRepo.findById(id).map {
+      case Some(product) => Ok(views.html.productDetail(product))
       case None => NotFound("Product not found")  
     }
 }

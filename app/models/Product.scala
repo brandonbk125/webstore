@@ -3,7 +3,7 @@ package models
 import java.util.UUID
 
 case class Product(
-  id: UUID,
+  id: String,
   name: String,
   description: String,
   price: BigDecimal,

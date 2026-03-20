@@ -6,8 +6,9 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "3.8.1"
 libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.0" % Test
-libraryDependencies += "org.mongodb" % "mongodb-driver-reactivestreams" % "5.1.0"
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.2" % Test
+
+libraryDependencies += "org.mongodb" % "mongodb-driver-sync" % "5.6.4"
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.example.controllers._"
 
