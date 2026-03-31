@@ -21,7 +21,7 @@ class ProductRepository @Inject()(config: Configuration) {
   private val client: MongoClient = MongoClients.create(mongoUri)
   private val collection = client.getDatabase(db).getCollection(col)
 
-  private def toProduct(doc: Document): Option[Product] = {
+  private def toProduct(doc: Document): Option[Product] = 
      Option(Product (
       id = doc.getObjectId("_id").toHexString,
       name = doc.getString("name"),
@@ -30,11 +30,10 @@ class ProductRepository @Inject()(config: Configuration) {
       imageUrl = doc.getString("imageUrl"),
       stock = doc.get("stock").toString.toInt
     ))
-  }
 
-  def findAll(): Future[Seq[Product]] = {
+  def findAll(): Future[Seq[Product]] = 
     Future.successful(collection.find().iterator().asScala.flatMap(toProduct).toSeq)
-  }
+  
 
   def findById(id: String): Future[Option[Product]] =
     val doc: Document = collection.find(new Document("_id", ObjectId(id))).first
